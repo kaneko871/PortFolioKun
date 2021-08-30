@@ -16,22 +16,19 @@ public class TopController {
 	@Autowired
 	StockService stockService;
 
-	//TODO: 一時的にDBのデータを見るように変更してるので、画面を返却するようにする
-	/*	@GetMapping("/top")
-		public String getTop() {
-			return "top";
-		}
-	*/
-
 	@GetMapping("/top")
+	public String getTop() {
+		return "top";
+	}
+
+
+	@GetMapping("/get-stock")
 	@ResponseBody
-	public List<Stock> getTop() {
-		//return "top";
+	public List<Stock> getStock() {
 
 		List<Stock> stockList = stockService.findAll();
 		return stockList;
 
 	}
-
 
 }
