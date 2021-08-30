@@ -34,8 +34,8 @@ public class GetDbDataController {
 	@ResponseBody
 	public List<Asset> getAsset() {
 
-		List<Asset> stockList = assetService.findAll();
-		return stockList;
+		List<Asset> assetList = assetService.findAll();
+		return assetList;
 
 	}
 

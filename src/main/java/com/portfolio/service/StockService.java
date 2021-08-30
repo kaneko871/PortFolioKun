@@ -18,4 +18,8 @@ public class StockService {
 		return stockList;
 	}
 
+	public Stock findById(String stockId) {
+		return stockMapper.findById(stockId);
+	}
+
 }
