@@ -20,31 +20,19 @@
 				<thead class="thead-light">
 					<tr>
 						<th class="th-width">ティッカー</th>
-						<th class="th-width">株価</th>
+						<th class="th-width">名称</th>
 						<th class="th-width">保有株数</th>
-						<th class="th-width">評価額</th>
+						<th class="th-width">平均取得単価</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>VYM</td>
-						<td>100</td>
-						<td>10</td>
-						<td>1000</td>
-					</tr>
-					<tr>
-						<td>VWO</td>
-						<td>100</td>
-						<td>5</td>
-						<td>500</td>
+ 					<tr th:each="item: ${ownedAssetList}">
+						<td th:text="${item.stockCode}"></td>
+						<td th:text="${item.stockName}"></td>
+						<td th:text="${item.stockNum}"></td>
+						<td th:text="${item.aveUnitPrice}"></td>
 					</tr>
 
-					<tr>
-						<td>SPYD</td>
-						<td>50</td>
-						<td>40</td>
-						<td>2000</td>
-					</tr>
 
 				</tbody>
 			</table>
