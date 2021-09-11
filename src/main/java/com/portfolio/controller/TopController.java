@@ -11,10 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.portfolio.controller.dto.OwnedAssetOutDto;
-import com.portfolio.model.Asset;
 import com.portfolio.model.Stock;
 import com.portfolio.service.AssetService;
 import com.portfolio.service.StockService;
+import com.portfolio.service.dto.AllKouzaAssetOutDto;
 
 @Controller
 public class TopController {
@@ -27,11 +27,15 @@ public class TopController {
 
 	@GetMapping("/top")
 	public String getTop(Model model) {
-		List<Asset> assetList = assetService.findAll();
+		//List<Asset> assetList = assetService.findAll();
+
+		// 口座区分をグルーピングして、資産を取得
+		List<AllKouzaAssetOutDto> allKouzaAssetoutDtoList = assetService.findGrpByKouzaData();
+
 
 		List<OwnedAssetOutDto> ownedAssetOutDtoList = new ArrayList<OwnedAssetOutDto>();
 
-		for(Asset asset : assetList) {
+		for(AllKouzaAssetOutDto asset : allKouzaAssetoutDtoList) {
 			Stock stock = stockService.findById(asset.getStockId());
 
 			OwnedAssetOutDto ownedAssetOutDto = new OwnedAssetOutDto();
@@ -53,8 +57,6 @@ public class TopController {
 						return Double.compare(obj2.getTotalInvestment(), obj1.getTotalInvestment());
 					}
 				}
-
-
 		);
 
 		model.addAttribute("ownedAssetList", ownedAssetOutDtoList);

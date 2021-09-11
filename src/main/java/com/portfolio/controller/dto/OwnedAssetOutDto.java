@@ -35,7 +35,7 @@ public class OwnedAssetOutDto {
 		return totalInvestment;
 	}
 	public void setTotalInvestment(Double stockNum, Double aveUnitPrice) {
-		this.totalInvestment = stockNum + aveUnitPrice;
+		this.totalInvestment = stockNum * aveUnitPrice;
 	}
 
 
