@@ -37,6 +37,8 @@ public class TopController {
 			ownedAssetOutDto.setStockName(stock.getStockName());
 			ownedAssetOutDto.setStockNum(asset.getStockNum());
 			ownedAssetOutDto.setAveUnitPrice(asset.getAveUnitPrice());
+			ownedAssetOutDto.setTotalInvestment(Double.parseDouble(asset.getStockNum()),
+					Double.parseDouble(asset.getAveUnitPrice()));
 
 			ownedAssetOutDtoList.add(ownedAssetOutDto);
 		}
