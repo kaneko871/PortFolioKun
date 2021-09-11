@@ -23,6 +23,7 @@
 						<th class="th-width">名称</th>
 						<th class="th-width">保有株数</th>
 						<th class="th-width">平均取得単価</th>
+						<th class="th-width">投資額</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -31,6 +32,7 @@
 						<td th:text="${item.stockName}"></td>
 						<td th:text="${item.stockNum}"></td>
 						<td th:text="${item.aveUnitPrice}"></td>
+						<td th:text="${#numbers.formatDecimal(item.totalInvestment, 0, 2)}"></td>
 					</tr>
 
 

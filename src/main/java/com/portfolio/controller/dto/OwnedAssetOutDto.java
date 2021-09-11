@@ -5,6 +5,7 @@ public class OwnedAssetOutDto {
 	private String stockName;
 	private String stockNum;
 	private String aveUnitPrice;
+	private Double totalInvestment;
 
 	public String getStockCode() {
 		return stockCode;
@@ -29,6 +30,12 @@ public class OwnedAssetOutDto {
 	}
 	public void setAveUnitPrice(String aveUnitPrice) {
 		this.aveUnitPrice = aveUnitPrice;
+	}
+	public Double getTotalInvestment() {
+		return totalInvestment;
+	}
+	public void setTotalInvestment(Double stockNum, Double aveUnitPrice) {
+		this.totalInvestment = stockNum + aveUnitPrice;
 	}
 
 
