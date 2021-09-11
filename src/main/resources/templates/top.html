@@ -31,7 +31,7 @@
 						<td th:text="${item.stockCode}"></td>
 						<td th:text="${item.stockName}"></td>
 						<td th:text="${item.stockNum}"></td>
-						<td th:text="${item.aveUnitPrice}"></td>
+						<td th:text="${#numbers.formatDecimal(item.aveUnitPrice, 0, 2)}"></td>
 						<td th:text="${#numbers.formatDecimal(item.totalInvestment, 0, 2)}"></td>
 					</tr>
 

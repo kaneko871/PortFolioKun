@@ -12,5 +12,4 @@ public interface AssetMapper {
 	@Select("SELECT * FROM asset")
 	public List<Asset> findAll();
 
-
 }
