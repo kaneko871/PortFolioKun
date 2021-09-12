@@ -21,16 +21,13 @@
     var ctx = document.getElementById("ChartDemo").getContext('2d');
     data = {
     	    datasets: [{
-    	        data: [10, 20, 30],
+    	        //data: [10, 20, 30],
+    	        data: [[${data}]] ,
     	        backgroundColor: ['#f88', '#484', '#48f'],
     	    }],
 
-    	    labels: [
-    	        'Red',
-    	        'Green',
-    	        'Blue'
-    	    ]
-    	};
+    	    labels: [[${label}]]
+    };
 
 
     // 円グラフ
