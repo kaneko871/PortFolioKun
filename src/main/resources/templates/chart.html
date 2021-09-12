@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <title>Chartサンプル</title>
+</head>
+<body>
+   <canvas id="ChartDemo"></canvas>
+    <script type="text/javascript" th:inline="javascript">
+    var ctx = document.getElementById("ChartDemo").getContext('2d');
+    data = {
+    	    datasets: [{
+    	        data: [10, 20, 30],
+    	        backgroundColor: ['#f88', '#484', '#48f'],
+    	    }],
+
+    	    labels: [
+    	        'Red',
+    	        'Green',
+    	        'Blue'
+    	    ]
+    	};
+
+
+    // 円グラフ
+    var myPieChart = new Chart(ctx,{
+        type: 'pie',
+        data: data,
+        options: {
+            responsive: true,
+        }
+    });
+     </script>
+</body>
+</html>
