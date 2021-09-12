@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
 <head>
-    <meta charset="UTF-8">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <title>Chartサンプル</title>
+<meta charset="UTF-8">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<title>ポートフォリオ 円グラフ</title>
 </head>
 <body>
-   <canvas id="ChartDemo"></canvas>
-    <script type="text/javascript" th:inline="javascript">
+	<div layout:fragment="content">
+		<div class="header border-bottom">
+			<h1 class="h2">保有銘柄一覧(円グラフ)</h1>
+		</div>
+
+
+
+		<canvas id="ChartDemo"></canvas>
+		<script type="text/javascript" th:inline="javascript">
     var ctx = document.getElementById("ChartDemo").getContext('2d');
     data = {
     	    datasets: [{
@@ -32,5 +42,7 @@
         }
     });
      </script>
+
+	</div>
 </body>
 </html>
