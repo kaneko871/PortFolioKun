@@ -4,8 +4,8 @@
 	layout:decorate="~{layout/layout}">
 <head>
 <meta charset="UTF-8">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script type="text/javascript" src="https://github.com/nagix/chartjs-plugin-colorschemes/releases/download/v0.2.0/chartjs-plugin-colorschemes.min.js"></script>
 <title>ポートフォリオ 円グラフ</title>
 </head>
 <body>
@@ -16,14 +16,14 @@
 
 
 
-		<canvas id="ChartDemo"></canvas>
-		<script type="text/javascript" th:inline="javascript">
-    var ctx = document.getElementById("ChartDemo").getContext('2d');
+	<canvas id="chart"></canvas>
+	<script type="text/javascript" th:inline="javascript">
+    var ctx = document.getElementById("chart").getContext('2d');
     data = {
     	    datasets: [{
     	        //data: [10, 20, 30],
-    	        data: [[${data}]] ,
-    	        backgroundColor: ['#f88', '#484', '#48f'],
+    	        data: [[${data}]]
+    	        //backgroundColor: ['#f88', '#484', '#48f'],
     	    }],
 
     	    labels: [[${label}]]
@@ -35,7 +35,12 @@
         type: 'pie',
         data: data,
         options: {
-            responsive: true,
+            //responsive: true,
+            plugins: {
+                colorschemes: {
+                  scheme: 'brewer.Paired12'
+                }
+            }
         }
     });
      </script>
