@@ -117,6 +117,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.portfolio.PortFolioKunApplication</mainClass>
+						</manifest>
+					</archive>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
