@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  pfkdb:
+    image: postgres:12-alpine
+    container_name: pfkdb
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+
+  web:
+    container_name: pfkweb
+    ports:
+      - 8080:8080
+    build: ./spring
+    links:
+      - pfkdb
+
+volumes:
+  postgres-volume:
+
