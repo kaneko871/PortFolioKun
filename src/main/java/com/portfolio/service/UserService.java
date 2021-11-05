@@ -5,7 +5,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.portfolio.mapper.UserMapper;
-import com.portfolio.model.User;
+import com.portfolio.model.PfkUser;
+
 
 @Service
 public class UserService {
@@ -16,7 +17,7 @@ public class UserService {
 	private PasswordEncoder encoder;
 
 	//ユーザ登録
-	public void signupUser(User user) {
+	public void signupUser(PfkUser user) {
 		//パスワードハッシュ化
 		String rawPassword = user.getPassword();
 		user.setPassword(encoder.encode(rawPassword));
@@ -24,10 +25,8 @@ public class UserService {
 	}
 
 
-	public User findLoginUser(String userId) {
+	public PfkUser getLoginUser(String userId) {
 		return userMapper.findById(userId);
 	}
-
-
 
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.portfolio.form.SignupForm;
-import com.portfolio.model.User;
+import com.portfolio.model.PfkUser;
 import com.portfolio.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -37,7 +37,7 @@ public class SignupController {
 	public String postSignup(@ModelAttribute SignupForm form) {
 
 		// formのフィールドをuserへコピー
-		User user = modelMapper.map(form, User.class);
+		PfkUser user = modelMapper.map(form, PfkUser.class);
 
 		//ユーザ登録
 		userService.signupUser(user);

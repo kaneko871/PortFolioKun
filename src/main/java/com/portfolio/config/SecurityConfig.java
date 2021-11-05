@@ -8,10 +8,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import com.portfolio.service.UserService;
 
 @EnableWebSecurity
 @Configuration
@@ -19,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 
 	@Autowired
-	private UserService userService;
+	private UserDetailsService userDetailsService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -64,22 +63,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 
 
-	/** インメモリ認証の設定 */
+	/** 認証の設定 */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		PasswordEncoder encoder = passwordEncoder();
 
 		// インメモリ認証
+		/*
 		auth
 		.inMemoryAuthentication()
 		.withUser("user") // userを追加
 		.password(encoder.encode("pass"))
 		.roles("GENERAL");
-
-		/*
-		auth
-		.userDetailsService(userService)
-		.passwordEncoder(encoder);
 		*/
+
+		auth
+		.userDetailsService(userDetailsService)
+		.passwordEncoder(encoder);
 	}
 }

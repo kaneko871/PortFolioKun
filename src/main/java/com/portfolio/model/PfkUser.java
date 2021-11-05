@@ -3,7 +3,7 @@ package com.portfolio.model;
 import lombok.Data;
 
 @Data
-public class User {
+public class PfkUser {
 	private String userId;
 	private String password;
 
