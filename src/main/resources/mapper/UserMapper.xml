@@ -15,7 +15,7 @@
 		select
 		*
 		from
-		stock
+		pfk_user
 		where
 		user_id=#{userId}
 
