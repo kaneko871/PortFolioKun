@@ -4,8 +4,7 @@
 
 <!-- Mapperとxmlのマッピング -->
 <mapper namespace="com.portfolio.mapper.UserMapper">
-	<resultMap type="com.portfolio.model.User"
-		id="user">
+	<resultMap type="com.portfolio.model.User" id="user">
 		<id column="user_id" property="userId" />
 		<result column="password" property="password" />
 	</resultMap>
@@ -22,5 +21,18 @@
 
 	</select>
 
+
+	<!-- ユーザ登録(1件) -->
+	<insert id="insertUser">
+		insert into pfk_user(
+		user_id,
+		password
+		)
+		values (
+		#{userId},
+		#{password}
+		)
+
+	</insert>
 
 </mapper>
