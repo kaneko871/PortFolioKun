@@ -9,20 +9,20 @@ import com.portfolio.model.User;
 
 @Service
 public class UserService {
+	@Autowired
+	UserMapper userMapper;
 
 	@Autowired
 	private PasswordEncoder encoder;
 
 	//ユーザ登録
-	public void insertUser(User user) {
+	public void signupUser(User user) {
 		//パスワードハッシュ化
 		String rawPassword = user.getPassword();
 		user.setPassword(encoder.encode(rawPassword));
+		userMapper.insertUser(user);
 	}
 
-
-	@Autowired
-	UserMapper userMapper;
 
 	public User findLoginUser(String userId) {
 		return userMapper.findById(userId);
