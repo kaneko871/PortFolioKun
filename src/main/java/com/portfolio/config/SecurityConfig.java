@@ -1,5 +1,6 @@
 package com.portfolio.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,10 +11,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.portfolio.service.UserService;
+
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
+
+	@Autowired
+	private UserService userService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -65,8 +71,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		// インメモリ認証
 		auth
 		.inMemoryAuthentication()
-		.withUser("aki") // userを追加
+		.withUser("user") // userを追加
 		.password(encoder.encode("pass"))
 		.roles("GENERAL");
+
+		/*
+		auth
+		.userDetailsService(userService)
+		.passwordEncoder(encoder);
+		*/
 	}
 }
