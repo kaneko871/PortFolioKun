@@ -9,7 +9,7 @@ import com.portfolio.model.Asset;
 
 @Mapper
 public interface AssetMapper {
-	@Select("SELECT * FROM asset")
-	public List<Asset> findAll();
+	@Select("SELECT * FROM asset where user_id = #{userId}")
+	public List<Asset> findAllByUserId(String userId);
 
 }

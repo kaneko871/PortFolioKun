@@ -6,6 +6,8 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,10 +29,13 @@ public class TopController {
 
 	@GetMapping("/top")
 	public String getTop(Model model) {
-		//List<Asset> assetList = assetService.findAll();
+		//Spring Securityによるユーザ情報のセッション管理
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userId = auth.getName();
 
+		//List<Asset> assetList = assetService.findAll();
 		// 口座区分をグルーピングして、資産を取得
-		List<AllKouzaAssetOutDto> allKouzaAssetoutDtoList = assetService.findGrpByKouzaData();
+		List<AllKouzaAssetOutDto> allKouzaAssetoutDtoList = assetService.findGrpByKouzaData(userId);
 
 
 		List<OwnedAssetOutDto> ownedAssetOutDtoList = new ArrayList<OwnedAssetOutDto>();
@@ -60,6 +65,7 @@ public class TopController {
 		);
 
 		model.addAttribute("ownedAssetList", ownedAssetOutDtoList);
+
 
 		return "top";
 	}
