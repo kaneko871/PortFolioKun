@@ -21,10 +21,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private UserDetailsService userDetailsService;
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
 	/** セキュリティの対象外を設定 */
 	@Override
@@ -58,12 +58,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.passwordParameter("password") // ログインページのパスワード
 		.defaultSuccessUrl("/top", true); // 成功後の遷移先
 
-        // ログアウト処理
-        http
-            .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout");
+		// ログアウト処理
+		http
+		.logout()
+		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		.logoutUrl("/logout")
+		.logoutSuccessUrl("/login?logout");
 
 		//http.csrf().disable();
 	}
@@ -82,7 +82,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.withUser("user") // userを追加
 		.password(encoder.encode("pass"))
 		.roles("GENERAL");
-		*/
+		 */
 
 		auth
 		.userDetailsService(userDetailsService)

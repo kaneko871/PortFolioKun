@@ -18,14 +18,14 @@ public class AssetService {
 	AssetMapper assetMapper;
 
 
-	public List<Asset> findAll(){
-		List<Asset> assetList = assetMapper.findAll();
+	public List<Asset> findAllByUserId(String userId){
+		List<Asset> assetList = assetMapper.findAllByUserId(userId);
 		return assetList;
 	}
 
-	public List<AllKouzaAssetOutDto> findGrpByKouzaData(){
+	public List<AllKouzaAssetOutDto> findGrpByKouzaData(String userId){
 		//List<AllKouzaAssetOutDto> allKouzaDataList = assetMapper.findAllKouzaData();
-		List<Asset> assetList = assetMapper.findAll();
+		List<Asset> assetList = assetMapper.findAllByUserId(userId);
 
 		// stock_idでグルーピング
 		Map<String, List<Asset>> grpByStockIdMap = assetList.stream().collect(
