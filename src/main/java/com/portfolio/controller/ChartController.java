@@ -7,6 +7,8 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +29,12 @@ public class ChartController {
 
 	@GetMapping("/chart")
 	public String getChart(Model model) {
+		//Spring Securityによるユーザ情報のセッション管理
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userId = auth.getName();
+
 		// 口座区分をグルーピングして、資産を取得
-		List<AllKouzaAssetOutDto> allKouzaAssetoutDtoList = assetService.findGrpByKouzaData();
+		List<AllKouzaAssetOutDto> allKouzaAssetoutDtoList = assetService.findGrpByKouzaData(userId);
 
 		List<ChartAssetOutDto> chartAssetOutDtoList = new ArrayList<ChartAssetOutDto>();
 		for(AllKouzaAssetOutDto asset : allKouzaAssetoutDtoList) {

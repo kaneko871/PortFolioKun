@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapperとxmlのマッピング -->
+<mapper namespace="com.portfolio.mapper.UserMapper">
+	<resultMap type="com.portfolio.model.User" id="user">
+		<id column="user_id" property="userId" />
+		<result column="password" property="password" />
+	</resultMap>
+
+
+	<!-- ユーザ1件検索 -->
+	<select id="findById" resultMap="user">
+		select
+		*
+		from
+		pfk_user
+		where
+		user_id=#{userId}
+
+	</select>
+
+
+	<!-- ユーザ登録(1件) -->
+	<insert id="insertUser">
+		insert into pfk_user(
+		user_id,
+		password
+		)
+		values (
+		#{userId},
+		#{password}
+		)
+
+	</insert>
+
+</mapper>

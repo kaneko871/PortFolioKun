@@ -7,11 +7,15 @@
 <mapper namespace="com.portfolio.mapper.AssetMapper">
 
 	<!-- Asset複数件取得 -->
-	<select id="findAll">
+	<select id="findAllByUserId">
 		select
 		*
 		from
 		asset
+		where
+		user_id
+		=
+		#{userId}
 	</select>
 
 
