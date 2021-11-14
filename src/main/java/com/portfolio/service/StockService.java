@@ -22,4 +22,15 @@ public class StockService {
 		return stockMapper.findById(stockId);
 	}
 
+	public boolean sampleJunitTest(String str) {
+		boolean isBool=false;
+
+		if(str.equals(("sample"))) {
+			isBool=true;
+		}else {
+			isBool=false;
+		}
+		return isBool;
+	}
+
 }
