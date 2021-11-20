@@ -1,6 +1,6 @@
-package com.portfolio;
+package com.portfolio.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.portfolio.mapper.StockMapper;
 import com.portfolio.model.Stock;
-import com.portfolio.service.StockService;
 import com.portfolio.service.impl.StockServiceImpl;
 
 @RunWith(SpringRunner.class)
@@ -53,9 +52,10 @@ class StockServiceTest {
 		String stockId = "9999";
 		Stock actualStock=stockService.findById(stockId);
 
-		assertEquals(actualStock.getStockId(), "9999");
-		assertEquals(actualStock.getStockCode(), "8888");
-		assertEquals(actualStock.getStockName(), "XYZ");
+		//org.assertj.core.api.Assertions.assertThat
+		assertThat(actualStock.getStockId()).isEqualTo("9999");
+		assertThat(actualStock.getStockCode()).isEqualTo("8888");
+		assertThat(actualStock.getStockName()).isEqualTo("XYZ");
 	}
 
 
