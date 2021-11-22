@@ -18,11 +18,13 @@ public class AssetServiceImpl implements AssetService{
 	@Autowired
 	AssetMapper assetMapper;
 
+	@Override
 	public List<Asset> findAllByUserId(String userId){
 		List<Asset> assetList = assetMapper.findAllByUserId(userId);
 		return assetList;
 	}
 
+	@Override
 	public List<AllKouzaAssetOutDto> findGrpByKouzaData(String userId){
 		//List<AllKouzaAssetOutDto> allKouzaDataList = assetMapper.findAllKouzaData();
 		List<Asset> assetList = assetMapper.findAllByUserId(userId);
