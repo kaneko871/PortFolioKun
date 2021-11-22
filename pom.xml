@@ -110,22 +110,47 @@
 
 		<!-- SpringSecurity -->
 		<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-security</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
 		<!-- Thymeleaf Lib Security -->
 		<dependency>
-		<groupId>org.thymeleaf.extras</groupId>
-		<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 		</dependency>
 
 
-		<!-- Spring Session  -->
+		<!-- Spring Session -->
 		<dependency>
-        <groupId>org.springframework.session</groupId>
-        <artifactId>spring-session-jdbc</artifactId>
-        </dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-jdbc</artifactId>
+		</dependency>
+
+		<!-- TEST -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hamcrest</groupId>
+					<artifactId>hamcrest-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
 	</dependencies>
 
