@@ -42,7 +42,7 @@ public class SignupController {
 		//ユーザ登録
 		userService.signupUser(user);
 
-		log.info(form.toString());
+		//log.info(form.toString());
 
 		return "redirect:/login";
 	}

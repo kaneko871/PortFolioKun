@@ -1,4 +1,4 @@
-package com.portfolio.service;
+package com.portfolio.work;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,12 +13,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.portfolio.mapper.UserMapper;
 import com.portfolio.model.PfkUser;
+import com.portfolio.service.UserService;
 import com.portfolio.service.impl.UserServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class UserServiceTest {
 
+//TODO: Spring Securityに対応したテストコードにする。	
+	
 	@TestConfiguration
 	static class UserServiceImplTestContextConfiguration{
 		@Bean
