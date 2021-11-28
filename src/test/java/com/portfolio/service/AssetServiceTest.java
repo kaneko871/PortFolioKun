@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import com.portfolio.mapper.AssetMapper;
 import com.portfolio.model.Asset;
+import com.portfolio.repository.AssetMapper;
 import com.portfolio.service.dto.AllKouzaAssetOutDto;
 
 @SpringBootTest

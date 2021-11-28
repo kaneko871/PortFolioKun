@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.portfolio.mapper.UserMapper;
 import com.portfolio.model.PfkUser;
+import com.portfolio.repository.UserMapper;
 import com.portfolio.service.UserService;
 
 @Service

@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import com.portfolio.mapper.StockMapper;
 import com.portfolio.model.Stock;
+import com.portfolio.repository.StockMapper;
 
 @SpringBootTest
 class StockServiceTest {

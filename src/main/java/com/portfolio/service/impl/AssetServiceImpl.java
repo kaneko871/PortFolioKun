@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.portfolio.mapper.AssetMapper;
 import com.portfolio.model.Asset;
+import com.portfolio.repository.AssetMapper;
 import com.portfolio.service.AssetService;
 import com.portfolio.service.dto.AllKouzaAssetOutDto;
 

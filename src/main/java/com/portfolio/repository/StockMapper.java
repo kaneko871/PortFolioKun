@@ -1,4 +1,4 @@
-package com.portfolio.mapper;
+package com.portfolio.repository;
 
 import java.util.List;
 

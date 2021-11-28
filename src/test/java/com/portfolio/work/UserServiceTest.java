@@ -11,8 +11,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.portfolio.mapper.UserMapper;
 import com.portfolio.model.PfkUser;
+import com.portfolio.repository.UserMapper;
 import com.portfolio.service.UserService;
 import com.portfolio.service.impl.UserServiceImpl;
 
