@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!--利用していないxml。JPAからMybatisに切り替えときのために残す。-->
 <!-- Mapperとxmlのマッピング -->
 <mapper namespace="com.portfolio.mapper.StockMapper">
 	<resultMap type="com.portfolio.model.Stock"

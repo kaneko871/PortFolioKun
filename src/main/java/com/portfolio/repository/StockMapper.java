@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.portfolio.model.Stock;
 
-
+/*利用していないクラス。JPAからMybatisに切り替えときのために残す。*/
 @Mapper
 public interface StockMapper {
     @Select("SELECT * FROM stock")

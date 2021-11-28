@@ -20,11 +20,9 @@ public class StockServiceImpl implements StockService{
 		List<Stock> stockList = stockMapper.findAll();
 		return stockList;
 	}
-
 	@Override
 	public Stock findById(String stockId) {
 		return stockMapper.findById(stockId);
 	}
-
 
 }

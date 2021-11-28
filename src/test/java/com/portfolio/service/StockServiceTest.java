@@ -20,7 +20,7 @@ class StockServiceTest {
 	@MockBean
 	private StockMapper stockMapper;
 
-
+/*
 	@BeforeEach
 	void setUp() {
 		Stock expectedStock = new Stock();
@@ -43,6 +43,6 @@ class StockServiceTest {
 		assertThat(actualStock.getStockName()).isEqualTo("XYZ");
 	}
 
-
+*/
 
 }
