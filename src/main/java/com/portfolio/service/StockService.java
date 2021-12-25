@@ -6,6 +6,6 @@ import com.portfolio.model.Stock;
 
 public interface StockService {
 	public List<Stock> findAll();
-	public Stock findById(String stockId);
-	public void insertStock(Stock stock);
+	public Stock findById(Integer stockId);
+	public void insertStock(Stock stock,String userId);
 }

@@ -33,7 +33,7 @@ public class AssetServiceTest {
 		assetA.setUserId("hoge");
 		assetA.setCompanyId("1");
 		assetA.setKouzaKubun("1");
-		assetA.setStockId("6");
+		assetA.setStockId(6);
 		assetA.setStockNum("44");
 		assetA.setAveUnitPrice("85.15");
 
@@ -41,7 +41,7 @@ public class AssetServiceTest {
 		assetB.setUserId("hoge");
 		assetB.setCompanyId("1");
 		assetB.setKouzaKubun("2");
-		assetB.setStockId("6");
+		assetB.setStockId(6);
 		assetB.setStockNum("21");
 		assetB.setAveUnitPrice("106.08");
 
@@ -49,7 +49,7 @@ public class AssetServiceTest {
 		assetC.setUserId("hoge");
 		assetC.setCompanyId("1");
 		assetC.setKouzaKubun("3");
-		assetC.setStockId("6");
+		assetC.setStockId(6);
 		assetC.setStockNum("49");
 		assetC.setAveUnitPrice("86.40");
 

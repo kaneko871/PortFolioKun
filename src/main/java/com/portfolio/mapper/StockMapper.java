@@ -16,12 +16,12 @@ public interface StockMapper {
     public List<Stock> findAll();
 
     @Select("SELECT * FROM stock WHERE stock_id = #{stockId}")
-    public Stock findById(@Param("stockId") String stockId);
+    public Stock findById(@Param("stockId") Integer stockId);
 
     @Select("select max(stock_id) from stock")
     public int selectMaxStockId();
     
-    @Insert("insert into stock(stock_id,stock_code,stock_name) values"
-    		+ " (#{stockId}, #{stockCode}, #{stockName})")
+    @Insert("insert into stock(user_id,stock_code,stock_name) values"
+    		+ " (#{userId}, #{stockCode}, #{stockName})")
     public int insertStock(Stock stock);
 }

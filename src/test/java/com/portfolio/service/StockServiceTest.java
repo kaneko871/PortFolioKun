@@ -24,7 +24,7 @@ class StockServiceTest {
 	@BeforeEach
 	void setUp() {
 		Stock expectedStock = new Stock();
-		expectedStock.setStockId("9999");
+		expectedStock.setStockId(9999);
 		expectedStock.setStockCode("8888");
 		expectedStock.setStockName("XYZ");
 
@@ -34,7 +34,7 @@ class StockServiceTest {
 
 	@Test
 	public void findByIdでstockを取得_正常() throws Exception {
-		String stockId = "9999";
+		int stockId = 9999;
 		Stock actualStock=stockService.findById(stockId);
 
 		//org.assertj.core.api.Assertions.assertThat

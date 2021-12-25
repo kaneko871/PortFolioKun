@@ -6,5 +6,5 @@ import com.portfolio.model.Company;
 
 public interface CompanyService {
 
-	public void insertCompany(Company company);
+	public void insertCompany(Company company, String userId);
 }

@@ -4,7 +4,7 @@ public class AllKouzaAssetOutDto {
 	//private String userId;
 	//private String companyId;
 	//private String kouzaKubun;
-	private String stockId;
+	private Integer stockId;
 	private String stockNum;
 	private String aveUnitPrice;
 
@@ -28,11 +28,11 @@ public class AllKouzaAssetOutDto {
 		this.kouzaKubun = kouzaKubun;
 	}
 	*/
-	public String getStockId() {
+	public Integer getStockId() {
 		return stockId;
 	}
-	public void setStockId(String stockId) {
-		this.stockId = stockId;
+	public void setStockId(Integer key) {
+		this.stockId = key;
 	}
 	public String getStockNum() {
 		return stockNum;
