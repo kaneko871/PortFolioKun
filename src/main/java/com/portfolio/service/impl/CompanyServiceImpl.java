@@ -17,7 +17,6 @@ public class CompanyServiceImpl implements CompanyService{
 	@Override
 	public void insertCompany(Company company) {
 		int maxCompanyId = companyMapper.selectMaxCompanyId();
-		System.out.println(maxCompanyId);
 		
 		company.setCompanyId(String.valueOf(maxCompanyId+1));
 		companyMapper.insertCompany(company);

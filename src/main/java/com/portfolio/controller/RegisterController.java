@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.portfolio.form.RegisterCompanyForm;
+import com.portfolio.form.RegisterStockForm;
 import com.portfolio.model.Company;
+import com.portfolio.model.Stock;
 import com.portfolio.service.CompanyService;
+import com.portfolio.service.StockService;
 
 @Controller
 public class RegisterController {
@@ -20,6 +23,9 @@ public class RegisterController {
 
 	@Autowired
 	private CompanyService companyService;
+	
+	@Autowired 
+	private StockService stockService;
 	
 	@GetMapping("/register/company")
 	public String getRegisterCompany(Model model, @ModelAttribute RegisterCompanyForm form) {
@@ -36,4 +42,18 @@ public class RegisterController {
 		return "top";
 	}
 
+	@GetMapping("/register/stock")
+	public String getRegisterStock(Model model, @ModelAttribute RegisterStockForm form) {
+		return "register/stock";
+	}
+	
+	@PostMapping("/register/stock")
+	public String postRegisterStock(@ModelAttribute RegisterStockForm form) {
+		Stock stock = modelMapper.map(form, Stock.class);
+		stockService.insertStock(stock);
+		return "top";
+	}
+
+	
+	
 }

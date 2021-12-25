@@ -2,6 +2,7 @@ package com.portfolio.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -17,4 +18,10 @@ public interface StockMapper {
     @Select("SELECT * FROM stock WHERE stock_id = #{stockId}")
     public Stock findById(@Param("stockId") String stockId);
 
+    @Select("select max(stock_id) from stock")
+    public int selectMaxStockId();
+    
+    @Insert("insert into stock(stock_id,stock_code,stock_name) values"
+    		+ " (#{stockId}, #{stockCode}, #{stockName})")
+    public int insertStock(Stock stock);
 }
