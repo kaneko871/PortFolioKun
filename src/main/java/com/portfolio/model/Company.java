@@ -6,7 +6,14 @@ import lombok.Data;
 public class Company {
 	private String companyId;
 	private String companyName;
+	private String userId;
 	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public String getCompanyId() {
 		return companyId;
 	}

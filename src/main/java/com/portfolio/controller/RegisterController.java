@@ -2,6 +2,8 @@ package com.portfolio.controller;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,8 +11,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.portfolio.form.RegisterCompanyForm;
+import com.portfolio.form.RegisterStockForm;
 import com.portfolio.model.Company;
+import com.portfolio.model.Stock;
 import com.portfolio.service.CompanyService;
+import com.portfolio.service.StockService;
 
 @Controller
 public class RegisterController {
@@ -21,6 +26,9 @@ public class RegisterController {
 	@Autowired
 	private CompanyService companyService;
 	
+	@Autowired 
+	private StockService stockService;
+	
 	@GetMapping("/register/company")
 	public String getRegisterCompany(Model model, @ModelAttribute RegisterCompanyForm form) {
 		return "register/company";
@@ -28,12 +36,32 @@ public class RegisterController {
 	
 	@PostMapping("/register/company")
 	public String postRegisterCompany(@ModelAttribute RegisterCompanyForm form) {
-		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userId = auth.getName();
+
+
 		Company company = modelMapper.map(form, Company.class);
 		
-		companyService.insertCompany(company);
+		companyService.insertCompany(company,userId);
 		
 		return "top";
 	}
 
+	@GetMapping("/register/stock")
+	public String getRegisterStock(Model model, @ModelAttribute RegisterStockForm form) {
+		return "register/stock";
+	}
+	
+	@PostMapping("/register/stock")
+	public String postRegisterStock(@ModelAttribute RegisterStockForm form) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userId = auth.getName();
+		
+		Stock stock = modelMapper.map(form, Stock.class);
+		stockService.insertStock(stock,userId);
+		return "top";
+	}
+
+	
+	
 }

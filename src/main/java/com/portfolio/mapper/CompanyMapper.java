@@ -8,10 +8,8 @@ import com.portfolio.model.Company;
 
 @Mapper
 public interface CompanyMapper {
-	@Select("select max(company_id) from company")
-	public int selectMaxCompanyId();
-	
-	@Insert("insert into company(company_id,company_name) values (#{companyId}, #{companyName})")
+	@Insert("insert into company(user_id,company_name) "
+			+ "values (#{userId},#{companyName})")
 	public int insertCompany(Company company);
 	
 }

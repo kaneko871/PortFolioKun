@@ -15,11 +15,8 @@ public class CompanyServiceImpl implements CompanyService{
 	
 	//証券会社登録
 	@Override
-	public void insertCompany(Company company) {
-		int maxCompanyId = companyMapper.selectMaxCompanyId();
-		System.out.println(maxCompanyId);
-		
-		company.setCompanyId(String.valueOf(maxCompanyId+1));
+	public void insertCompany(Company company, String userId) {
+		company.setUserId(userId);
 		companyMapper.insertCompany(company);
 	}
 }
