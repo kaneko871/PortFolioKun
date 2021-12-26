@@ -25,6 +25,7 @@ class StockServiceTest {
 	void setUp() {
 		Stock expectedStock = new Stock();
 		expectedStock.setStockId(9999);
+		expectedStock.setUserId("hoge");
 		expectedStock.setStockCode("8888");
 		expectedStock.setStockName("XYZ");
 
@@ -38,7 +39,8 @@ class StockServiceTest {
 		Stock actualStock=stockService.findById(stockId);
 
 		//org.assertj.core.api.Assertions.assertThat
-		assertThat(actualStock.getStockId()).isEqualTo("9999");
+		assertThat(actualStock.getStockId()).isEqualTo(9999);
+		assertThat(actualStock.getUserId()).isEqualTo("hoge");
 		assertThat(actualStock.getStockCode()).isEqualTo("8888");
 		assertThat(actualStock.getStockName()).isEqualTo("XYZ");
 	}
