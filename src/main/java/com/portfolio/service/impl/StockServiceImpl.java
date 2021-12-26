@@ -27,9 +27,6 @@ public class StockServiceImpl implements StockService{
 
 	@Override
 	public void insertStock(Stock stock,String userId) {
-		//int maxStockId = stockMapper.selectMaxStockId();
-		//System.out.println("maxStockId: "+ maxStockId);
-		//stock.setStockId(String.valueOf(maxStockId+1));
 		stock.setUserId(userId);
 		stockMapper.insertStock(stock);
 	}

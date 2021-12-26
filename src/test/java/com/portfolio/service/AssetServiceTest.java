@@ -75,7 +75,7 @@ public class AssetServiceTest {
 			System.out.println(actualDtoList.get(i));
 
 			//org.assertj.core.api.Assertions.assertThat
-			assertThat(actualDtoList.get(i).getStockId()).isEqualTo("6");
+			assertThat(actualDtoList.get(i).getStockId()).isEqualTo(6);
 			assertThat(actualDtoList.get(i).getStockNum()).isEqualTo("114");
 		}
 	}
