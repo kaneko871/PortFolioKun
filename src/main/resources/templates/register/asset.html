@@ -24,9 +24,9 @@
 		<form id="register-asset-form" method="post" action="/register/asset"
 			class="form-register-asset" th:object="${registerAssetForm}">
 
-			<!-- 保有資産 -->
+			<!-- 証券会社 -->
 			<div class="form-group">
-				<label for="companyName"> 保有資産名</label>
+				<label for="companyName"> 証券会社名</label>
 				<!-- <input type="text" class="form-control" th:field="*{companyName}">  -->
 				<select class="form-control" th:field="*{companyName}">
 				<option value="">選択してください</option>
@@ -39,6 +39,22 @@
 				</option>
 				</select>
 			</div>
+
+			<!-- 株式コード -->
+			<div class="form-group">
+				<label for="stockCode"> 株式コード</label>
+				<select class="form-control" th:field="*{stockCode}">
+				<option value="">選択してください</option>
+				<option 
+					th:each="stocks: ${stockList}"
+				 	th:value="${stocks.stockId}"
+				 	th:text="${stocks.stockCode}"
+				 	th:selected="${stocks.stockId == selectedValue}">
+				</option>
+				</select>
+			</div>
+	
+
 			<!-- 登録ボタン -->
 			<input type="submit" value="保有資産登録"
 				class="btn btn-primary w-100 mt-3" /> <input type="hidden"

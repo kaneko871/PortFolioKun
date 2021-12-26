@@ -31,5 +31,10 @@ public class StockServiceImpl implements StockService{
 		stockMapper.insertStock(stock);
 	}
 
+	@Override
+	public List<Stock> getStockListByuserId(String userId) {
+		return stockMapper.getStockListByuserId(userId);
+	}
+
 
 }
