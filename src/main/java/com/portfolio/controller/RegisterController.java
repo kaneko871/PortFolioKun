@@ -1,5 +1,7 @@
 package com.portfolio.controller;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -65,6 +67,12 @@ public class RegisterController {
 
 	@GetMapping("/register/asset")
 	public String getRegisterAsset(Model model, @ModelAttribute RegisterAssetForm form) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userId = auth.getName();
+		
+		List<Company> companyList = companyService.getCompanyListbyUserId(userId);
+		model.addAttribute(companyList);
+		
 		return "register/asset";
 	}
 	
