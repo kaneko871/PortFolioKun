@@ -78,6 +78,9 @@ public class RegisterController {
 		List<Stock> stockList = stockService.getStockListByuserId(userId);
 		model.addAttribute(stockList);
 		
+		//口座区分プルダウン
+		
+		
 		return "register/asset";
 	}
 	

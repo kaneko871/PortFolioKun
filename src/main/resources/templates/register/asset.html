@@ -53,8 +53,30 @@
 				</option>
 				</select>
 			</div>
-	
 
+			<!-- 口座区分 -->
+			<div class="form-group">
+				<label for="kouzaKubun"> 口座区分</label>
+				<select class="form-control" th:field="*{kouzaKubun}">
+				<option value="">選択してください</option>
+				<option value="1" >普通口座</option>
+				<option value="2" >特定口座</option>
+				<option value="3" >NISA口座</option>
+				</select>
+			</div>
+	
+			<!-- 保有株数 -->
+			<div class="form-group">
+				<label for="stockNum"> 保有株数</label>
+				<input type="text" class="form-control" th:field="*{stockNum}">
+			</div>
+
+			<!-- 平均取得単価 -->
+			<div class="form-group">
+				<label for="aveUnitPrice"> 平均取得単価</label>
+				<input type="text" class="form-control" th:field="*{aveUnitPrice}">
+			</div>
+	
 			<!-- 登録ボタン -->
 			<input type="submit" value="保有資産登録"
 				class="btn btn-primary w-100 mt-3" /> <input type="hidden"
