@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.portfolio.form.RegisterAssetForm;
 import com.portfolio.form.RegisterCompanyForm;
 import com.portfolio.form.RegisterStockForm;
 import com.portfolio.model.Company;
@@ -62,6 +63,16 @@ public class RegisterController {
 		return "top";
 	}
 
+	@GetMapping("/register/asset")
+	public String getRegisterAsset(Model model, @ModelAttribute RegisterAssetForm form) {
+		return "register/asset";
+	}
 	
+	@PostMapping("/register/asset")
+	public String postRegisterAsset(@ModelAttribute RegisterAssetForm form) {
+		return "top";
+	}
+
+
 	
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+<head>
+<meta charset="UTF-8"></meta>
+<!-- CSS読込 -->
+<!--<link rel="stylesheet" 
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"> -->
+<link rel="stylesheet" th:href="@{/css/register/register.css}">
+<!-- JS読込 -->
+<!-- <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+ -->
+<title>保有資産登録</title>
+</head>
+<!-- <body class="bg-light">   -->
+<body>
+	<div layout:fragment="content">
+		<div class="header border-bottom">
+			<h1 class="h2">保有資産登録</h1>
+		</div>
+
+		<form id="register-asset-form" method="post" action="/register/asset"
+			class="form-register-asset" th:object="${registerAssetForm}">
+
+			<!-- 保有資産 -->
+			<div class="form-group">
+				<label for="companyName"> 保有資産名</label>
+				<!-- <input type="text" class="form-control" th:field="*{companyName}">  -->
+				<select class="form-control" th:field="*{companyName}">
+				<option value="">選択してください</option>
+				<!--<option value="SBI">SBI</option>   -->
+				<option 
+					th:each="companies: ${companyList}"
+				 	th:value="${companies.companyId}"
+				 	th:text="${companies.companyName}"
+				 	th:selected="${companies.companyId == selectedValue}">
+				</option>
+				</select>
+			</div>
+			<!-- 登録ボタン -->
+			<input type="submit" value="保有資産登録"
+				class="btn btn-primary w-100 mt-3" /> <input type="hidden"
+				th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+		</form>
+	</div>
+</body>
+</html>
