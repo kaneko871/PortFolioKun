@@ -24,4 +24,7 @@ public interface StockMapper {
     @Insert("insert into stock(user_id,stock_code,stock_name) values"
     		+ " (#{userId}, #{stockCode}, #{stockName})")
     public int insertStock(Stock stock);
+    
+	@Select("select * from stock where user_id = #{userId}")
+	public List<Stock> getStockListByuserId(String userId);
 }

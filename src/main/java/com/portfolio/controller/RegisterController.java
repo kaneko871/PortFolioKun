@@ -1,5 +1,7 @@
 package com.portfolio.controller;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -10,10 +12,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.portfolio.form.RegisterAssetForm;
 import com.portfolio.form.RegisterCompanyForm;
 import com.portfolio.form.RegisterStockForm;
+import com.portfolio.model.Asset;
 import com.portfolio.model.Company;
 import com.portfolio.model.Stock;
+import com.portfolio.service.AssetService;
 import com.portfolio.service.CompanyService;
 import com.portfolio.service.StockService;
 
@@ -28,6 +33,9 @@ public class RegisterController {
 	
 	@Autowired 
 	private StockService stockService;
+	
+	@Autowired
+	private AssetService assetService;
 	
 	@GetMapping("/register/company")
 	public String getRegisterCompany(Model model, @ModelAttribute RegisterCompanyForm form) {
@@ -62,6 +70,34 @@ public class RegisterController {
 		return "top";
 	}
 
+	@GetMapping("/register/asset")
+	public String getRegisterAsset(Model model, @ModelAttribute RegisterAssetForm form) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userId = auth.getName();
+		
+		//証券会社プルダウン
+		List<Company> companyList = companyService.getCompanyListbyUserId(userId);
+		model.addAttribute(companyList);
+
+		//株式コードプルダウン
+		List<Stock> stockList = stockService.getStockListByuserId(userId);
+		model.addAttribute(stockList);
+		
+		
+		return "register/asset";
+	}
 	
+	@PostMapping("/register/asset")
+	public String postRegisterAsset(@ModelAttribute RegisterAssetForm form) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userId = auth.getName();
+		
+		Asset asset = modelMapper.map(form, Asset.class);
+		assetService.insertAsset(asset,userId);
+		
+		return "top";
+	}
+
+
 	
 }

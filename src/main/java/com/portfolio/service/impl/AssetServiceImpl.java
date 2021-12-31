@@ -60,6 +60,12 @@ public class AssetServiceImpl implements AssetService{
 		return allKouzaAssetOutDtoList;
 	}
 
+	@Override
+	public void insertAsset(Asset asset, String userId) {
+		asset.setUserId(userId);
+		assetMapper.insertAsset(asset);
+	}
+
 
 
 }

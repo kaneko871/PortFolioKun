@@ -1,5 +1,7 @@
 package com.portfolio.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,10 @@ public class CompanyServiceImpl implements CompanyService{
 	public void insertCompany(Company company, String userId) {
 		company.setUserId(userId);
 		companyMapper.insertCompany(company);
+	}
+
+	@Override
+	public List<Company> getCompanyListbyUserId(String userId) {
+		return companyMapper.getCompanyListbyUserId(userId);
 	}
 }

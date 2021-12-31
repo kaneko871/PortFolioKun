@@ -1,5 +1,7 @@
 package com.portfolio.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -12,4 +14,6 @@ public interface CompanyMapper {
 			+ "values (#{userId},#{companyName})")
 	public int insertCompany(Company company);
 	
+	@Select("select * from company where user_id = #{userId}")
+	public List<Company> getCompanyListbyUserId(String userId);
 }
