@@ -4,22 +4,22 @@ import lombok.Data;
 
 @Data
 public class RegisterAssetForm {
-	private String companyName;
-	private String stockCode;
+	private String companyId;
+	private String stockId;
 	private String kouzaKubun;
 	private String stockNum;
 	private String aveUnitPrice;
-	public String getCompanyName() {
-		return companyName;
+	public String getCompanyId() {
+		return companyId;
 	}
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
+	public void setCompanyId(String companyId) {
+		this.companyId = companyId;
 	}
-	public String getStockCode() {
-		return stockCode;
+	public String getStockId() {
+		return stockId;
 	}
-	public void setStockCode(String stockCode) {
-		this.stockCode = stockCode;
+	public void setStockId(String stockId) {
+		this.stockId = stockId;
 	}
 	public String getKouzaKubun() {
 		return kouzaKubun;

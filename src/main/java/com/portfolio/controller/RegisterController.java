@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.portfolio.form.RegisterAssetForm;
 import com.portfolio.form.RegisterCompanyForm;
 import com.portfolio.form.RegisterStockForm;
+import com.portfolio.model.Asset;
 import com.portfolio.model.Company;
 import com.portfolio.model.Stock;
+import com.portfolio.service.AssetService;
 import com.portfolio.service.CompanyService;
 import com.portfolio.service.StockService;
 
@@ -31,6 +33,9 @@ public class RegisterController {
 	
 	@Autowired 
 	private StockService stockService;
+	
+	@Autowired
+	private AssetService assetService;
 	
 	@GetMapping("/register/company")
 	public String getRegisterCompany(Model model, @ModelAttribute RegisterCompanyForm form) {
@@ -78,14 +83,17 @@ public class RegisterController {
 		List<Stock> stockList = stockService.getStockListByuserId(userId);
 		model.addAttribute(stockList);
 		
-		//口座区分プルダウン
-		
 		
 		return "register/asset";
 	}
 	
 	@PostMapping("/register/asset")
 	public String postRegisterAsset(@ModelAttribute RegisterAssetForm form) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userId = auth.getName();
+		
+		Asset asset = modelMapper.map(form, Asset.class);
+		assetService.insertAsset(asset,userId);
 		
 		return "top";
 	}
