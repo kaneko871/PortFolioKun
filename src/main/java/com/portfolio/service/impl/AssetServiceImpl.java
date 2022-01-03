@@ -30,13 +30,13 @@ public class AssetServiceImpl implements AssetService{
 		List<Asset> assetList = assetMapper.findAllByUserId(userId);
 
 		// stock_idでグルーピング
-		Map<String, List<Asset>> grpByStockIdMap = assetList.stream().collect(
+		Map<Integer, List<Asset>> grpByStockIdMap = assetList.stream().collect(
 				Collectors.groupingBy(Asset::getStockId)
 		);
 
 
 		List<AllKouzaAssetOutDto> allKouzaAssetOutDtoList = new ArrayList<AllKouzaAssetOutDto>();
-		for(String key : grpByStockIdMap.keySet()) {
+		for(Integer key : grpByStockIdMap.keySet()) {
 
 			AllKouzaAssetOutDto allKouzaAssetOutDto = new AllKouzaAssetOutDto();
 			allKouzaAssetOutDto.setStockId(key);
@@ -58,6 +58,12 @@ public class AssetServiceImpl implements AssetService{
 
 
 		return allKouzaAssetOutDtoList;
+	}
+
+	@Override
+	public void insertAsset(Asset asset, String userId) {
+		asset.setUserId(userId);
+		assetMapper.insertAsset(asset);
 	}
 
 

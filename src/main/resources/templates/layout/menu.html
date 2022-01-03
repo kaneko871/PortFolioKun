@@ -5,17 +5,23 @@
 	layout:decorate="~{layout/layout}">
 
 <head>
+  <meta charset="UTF-8"></meta>
 </head>
 <body>
 	<div layout:fragment="menu" class="bg-light">
 		<ul class="nav nav-pills nav-stacked">
 			<li role="presentation"><a class="nav-link"
-				th:href="@{'/top'}">ポートフォリオ(リスト)</a></li>
+				th:href="@{'/top'}">保有銘柄一覧(リスト)</a></li>
 			<li role="presentation"><a class="nav-link"
-				th:href="@{'/chart'}">ポートフォリオ(円グラフ)</a></li>
-
+				th:href="@{'/chart'}">保有銘柄一覧(円グラフ)</a></li>
+			<!-- <li class="sub-heading">保有銘柄登録</li>   -->
+			<li role="presentation"><a class="nav-link"
+				th:href="@{'/register/company'}">証券会社登録</a></li>
+			<li role="presentation"><a class="nav-link"
+				th:href="@{'/register/stock'}">株式登録</a></li>
+			<li role="presentation"><a class="nav-link"
+				th:href="@{'/register/asset'}">資産登録</a></li>
 		</ul>
-
 	</div>
 </body>
 </html>

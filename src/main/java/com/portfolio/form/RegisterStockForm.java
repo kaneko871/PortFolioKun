@@ -1,26 +1,11 @@
-package com.portfolio.model;
+package com.portfolio.form;
 
 import lombok.Data;
 
 @Data
-public class Stock {
-	private Integer stockId;
+public class RegisterStockForm {
 	private String stockCode;
 	private String stockName;
-	private String userId;
-
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public Integer getStockId() {
-		return stockId;
-	}
-	public void setStockId(Integer stockId) {
-		this.stockId = stockId;
-	}
 	public String getStockCode() {
 		return stockCode;
 	}
@@ -33,7 +18,6 @@ public class Stock {
 	public void setStockName(String stockName) {
 		this.stockName = stockName;
 	}
-
-
-
+	
+	
 }

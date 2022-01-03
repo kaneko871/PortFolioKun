@@ -7,7 +7,7 @@ public class Asset {
 	private String userId;
 	private String companyId;
 	private String kouzaKubun;
-	private String stockId;
+	private Integer stockId;
 	private String stockNum;
 	private String aveUnitPrice;
 
@@ -30,10 +30,10 @@ public class Asset {
 	public void setKouzaKubun(String kouzaKubun) {
 		this.kouzaKubun = kouzaKubun;
 	}
-	public String getStockId() {
+	public Integer getStockId() {
 		return stockId;
 	}
-	public void setStockId(String stockId) {
+	public void setStockId(Integer stockId) {
 		this.stockId = stockId;
 	}
 	public String getStockNum() {
