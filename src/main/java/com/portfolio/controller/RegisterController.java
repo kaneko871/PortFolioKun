@@ -51,8 +51,8 @@ public class RegisterController {
 		Company company = modelMapper.map(form, Company.class);
 		
 		companyService.insertCompany(company,userId);
-		
-		return "top";
+
+		return "register/company";
 	}
 
 	@GetMapping("/register/stock")
@@ -67,7 +67,7 @@ public class RegisterController {
 		
 		Stock stock = modelMapper.map(form, Stock.class);
 		stockService.insertStock(stock,userId);
-		return "top";
+		return "register/stock";
 	}
 
 	@GetMapping("/register/asset")
@@ -88,14 +88,22 @@ public class RegisterController {
 	}
 	
 	@PostMapping("/register/asset")
-	public String postRegisterAsset(@ModelAttribute RegisterAssetForm form) {
+	public String postRegisterAsset(Model model,@ModelAttribute RegisterAssetForm form) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String userId = auth.getName();
-		
+
+		//証券会社プルダウン
+		List<Company> companyList = companyService.getCompanyListbyUserId(userId);
+		model.addAttribute(companyList);
+
+		//株式コードプルダウン
+		List<Stock> stockList = stockService.getStockListByuserId(userId);
+		model.addAttribute(stockList);
+	
 		Asset asset = modelMapper.map(form, Asset.class);
 		assetService.insertAsset(asset,userId);
 		
-		return "top";
+		return "register/asset";
 	}
 
 
