@@ -15,3 +15,12 @@
   overflow-y: auto;
   height: calc(100vh - 58px);
 }
+
+.sub-heading  {
+    display: block;
+    padding: 6px 10px 6px 10px;
+    color: #64615D;
+    background: #DAEAAA;
+    text-decoration: none;
+    font-weight: bold;
+}
