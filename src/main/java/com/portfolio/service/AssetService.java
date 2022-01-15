@@ -11,4 +11,5 @@ public interface AssetService {
 	public List<Asset> findAllByUserId(String userId);
 	public List<AllKouzaAssetOutDto> findGrpByKouzaData(String userId);
 	public void insertAsset(Asset asset, String userId);
+	public List<Asset> getAssetListByStockId(String stockId, String userId);
 }

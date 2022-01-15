@@ -9,4 +9,5 @@ public interface StockService {
 	public Stock findById(Integer stockId);
 	public void insertStock(Stock stock,String userId);
 	public List<Stock> getStockListByuserId(String userId);
+	public String getStockIdByCode(String stockCode, String userId);
 }

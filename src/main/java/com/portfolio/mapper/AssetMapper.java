@@ -18,4 +18,8 @@ public interface AssetMapper {
 			+ "values(#{userId},#{companyId},#{kouzaKubun},"
 			+ "#{stockId},#{stockNum},#{aveUnitPrice})")
 	public void insertAsset(Asset asset);
+	
+	@Select("select * from asset "
+			+ "where user_id = #{userId} and stock_id = #{stockId}")
+	public List<Asset> getAssetListByStockId(String userId, String stockId);
 }
