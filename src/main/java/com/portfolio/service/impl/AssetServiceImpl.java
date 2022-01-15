@@ -66,6 +66,11 @@ public class AssetServiceImpl implements AssetService{
 		assetMapper.insertAsset(asset);
 	}
 
+	@Override
+	public List<Asset> getAssetListByStockId(String stockId, String userId) {
+		return assetMapper.getAssetListByStockId(userId, stockId);
+	}
+
 
 
 }

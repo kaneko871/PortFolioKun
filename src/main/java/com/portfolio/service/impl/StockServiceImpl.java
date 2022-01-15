@@ -36,5 +36,10 @@ public class StockServiceImpl implements StockService{
 		return stockMapper.getStockListByuserId(userId);
 	}
 
+	@Override
+	public String getStockIdByCode(String stockCode, String userId) {
+		return stockMapper.getStockIdByCode(stockCode, userId);
+	}
+
 
 }

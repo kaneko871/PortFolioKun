@@ -27,4 +27,10 @@ public interface StockMapper {
     
 	@Select("select * from stock where user_id = #{userId}")
 	public List<Stock> getStockListByuserId(String userId);
+
+	@Select("select stock_id from stock where stock_code = #{stockCode} and user_id = #{userId}")
+	public String getStockIdByCode(String stockCode,String userId);
+
+
+
 }

@@ -26,4 +26,9 @@ public class CompanyServiceImpl implements CompanyService{
 	public List<Company> getCompanyListbyUserId(String userId) {
 		return companyMapper.getCompanyListbyUserId(userId);
 	}
+
+	@Override
+	public String getCompanyNameById(String userId, String companyId) {
+		return companyMapper.getCompanyNameById(userId, Integer.parseInt(companyId));
+	}
 }
