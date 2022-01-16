@@ -1,7 +1,9 @@
 package com.portfolio.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -32,11 +34,14 @@ public class DetailListController {
 	CompanyService companyService;
 
  	List<AssetDetailListOutDto> assetDetailList = new ArrayList<AssetDetailListOutDto>();
-	
+ 	List<HashMap<AssetDetailListOutDto, Asset>>  assetDetailMapList = new ArrayList<HashMap<AssetDetailListOutDto, Asset>>();
+ 	String targetStockCode;
+ 	
 	@GetMapping("/detail-list/asset/{stockCode}")
 	public String getAssetDetailList(Model model,
 			@PathVariable("stockCode") String stockCode) {
 
+		targetStockCode=stockCode;
 		String detailAssetListHeader = "資産詳細リスト " + stockCode;
 		model.addAttribute("detailAssetListHeader", detailAssetListHeader);
 
@@ -46,7 +51,9 @@ public class DetailListController {
 	 	String stockId = stockService.getStockIdByCode(stockCode, userId);
 
 	 	List<Asset> assetList = assetService.getAssetListByStockId(stockId, userId);
-
+	 	
+	 	assetDetailList=new ArrayList<AssetDetailListOutDto>();
+	 	assetDetailMapList = new ArrayList<HashMap<AssetDetailListOutDto, Asset>>();
 	 	//List<AssetDetailListOutDto> assetDetailList = new ArrayList<AssetDetailListOutDto>();
 	 	for(Asset asset : assetList) {
 	 		String companyId = asset.getCompanyId();
@@ -71,19 +78,32 @@ public class DetailListController {
 	 				* Double.parseDouble(asset.getAveUnitPrice());
 	 		assetDetailListOutDto.setTotalInvestment(totalInvestment);
 	 		assetDetailList.add(assetDetailListOutDto);
+	 		
+	 		HashMap<AssetDetailListOutDto, Asset>  assetDetailMap = new HashMap<AssetDetailListOutDto, Asset>();
+	 		assetDetailMap.put(assetDetailListOutDto,asset);
+	 		assetDetailMapList.add(assetDetailMap);
 	 	}
 	 	
 	 	model.addAttribute("assetList",assetDetailList);
 
 		return "detail-list/asset";
 	}
+
 	
 	@PostMapping("/detail-list/asset/delete")
 	public String deleteAsset(Model model, @RequestParam("stat-index") String statIndex) {
-		System.out.println("stat index: "+statIndex);
-		System.out.println("detail asset list of stat index: "+ assetDetailList.get(Integer.parseInt(statIndex)));
+		AssetDetailListOutDto assetDetailListOutDto = assetDetailList.get(Integer.parseInt(statIndex));
+
+		Asset deleteAsset=assetDetailMapList.get(Integer.parseInt(statIndex)).get(assetDetailListOutDto);
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String userId = auth.getName();
 		
-		return "detail-list/asset";
+		assetService.deleteAsset(userId, deleteAsset.getCompanyId(), 
+				deleteAsset.getKouzaKubun(), String.valueOf(deleteAsset.getStockId()));
+		
+		String url = "redirect:/detail-list/asset/"+targetStockCode;
+		return url;
 	}
 	
 }

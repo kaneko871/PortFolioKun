@@ -12,4 +12,5 @@ public interface AssetService {
 	public List<AllKouzaAssetOutDto> findGrpByKouzaData(String userId);
 	public void insertAsset(Asset asset, String userId);
 	public List<Asset> getAssetListByStockId(String stockId, String userId);
+	public void deleteAsset(String userId, String companyId, String kouzaKubun, String stockId);
 }
