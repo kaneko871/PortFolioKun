@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.portfolio.controller.dto.AssetDetailListOutDto;
 import com.portfolio.model.Asset;
@@ -28,6 +30,8 @@ public class DetailListController {
 	
 	@Autowired
 	CompanyService companyService;
+
+ 	List<AssetDetailListOutDto> assetDetailList = new ArrayList<AssetDetailListOutDto>();
 	
 	@GetMapping("/detail-list/asset/{stockCode}")
 	public String getAssetDetailList(Model model,
@@ -43,7 +47,7 @@ public class DetailListController {
 
 	 	List<Asset> assetList = assetService.getAssetListByStockId(stockId, userId);
 
-	 	List<AssetDetailListOutDto> assetDetailList = new ArrayList<AssetDetailListOutDto>();
+	 	//List<AssetDetailListOutDto> assetDetailList = new ArrayList<AssetDetailListOutDto>();
 	 	for(Asset asset : assetList) {
 	 		String companyId = asset.getCompanyId();
 	 		String companyName = companyService.getCompanyNameById(userId, companyId);
@@ -73,4 +77,13 @@ public class DetailListController {
 
 		return "detail-list/asset";
 	}
+	
+	@PostMapping("/detail-list/asset/delete")
+	public String deleteAsset(Model model, @RequestParam("stat-index") String statIndex) {
+		System.out.println("stat index: "+statIndex);
+		System.out.println("detail asset list of stat index: "+ assetDetailList.get(Integer.parseInt(statIndex)));
+		
+		return "detail-list/asset";
+	}
+	
 }
