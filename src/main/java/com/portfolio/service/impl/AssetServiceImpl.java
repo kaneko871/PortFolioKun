@@ -71,6 +71,11 @@ public class AssetServiceImpl implements AssetService{
 		return assetMapper.getAssetListByStockId(userId, stockId);
 	}
 
+	@Override
+	public void deleteAsset(String userId, String companyId, String kouzaKubun, String stockId) {
+		assetMapper.deleteAsset(userId, companyId, kouzaKubun, stockId);
+	}
+
 
 
 }
