@@ -1,48 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
 <head>
 <meta charset="UTF-8"></meta>
-<title>ポートフォリオ　リスト</title>
+<title>ポートフォリオ リスト</title>
 <!-- 個別CSS読み込み -->
 <link rel="stylesheet" th:href="@{/css/top/list.css}">
 </head>
 <body>
-	<div layout:fragment="content">
-		<div class="header border-bottom">
-			<h1 class="h2">保有銘柄一覧(リスト)</h1>
+		<div layout:fragment="content">
+			<div class="header border-bottom">
+				<h1 class="h2">保有銘柄一覧(リスト)</h1>
+			</div>
+			<!-- 保有銘柄一覧表示 -->
+			<div>
+				<table class="table table-striped table-bordered table-hover">
+					<thead class="thead-light">
+						<tr>
+							<th class="th-width">ティッカー</th>
+							<th class="th-width">名称</th>
+							<th class="th-width">保有株数</th>
+							<th class="th-width">平均取得単価</th>
+							<th class="th-width">投資額</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item,stat: ${ownedAssetList}">
+							<td><a th:href="@{/detail-list/asset/{stockCode}(stockCode=${item.stockCode})}" th:text="${item.stockCode}"></a></td>
+							<td th:text="${item.stockName}"></td>
+							<td th:text="${item.stockNum}"></td>
+							<td th:text="${#numbers.formatDecimal(item.aveUnitPrice, 0, 2)}"></td>
+							<td th:text="${#numbers.formatDecimal(item.totalInvestment, 0, 2)}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-
-		<!-- 保有銘柄一覧表示 -->
-		<div>
-			<table class="table table-striped table-bordered table-hover">
-				<thead class="thead-light">
-					<tr>
-						<th class="th-width">ティッカー</th>
-						<th class="th-width">名称</th>
-						<th class="th-width">保有株数</th>
-						<th class="th-width">平均取得単価</th>
-						<th class="th-width">投資額</th>
-					</tr>
-				</thead>
-				<tbody>
- 					<tr th:each="item: ${ownedAssetList}">
-						<td th:text="${item.stockCode}"></td>
-						<td th:text="${item.stockName}"></td>
-						<td th:text="${item.stockNum}"></td>
-						<td th:text="${#numbers.formatDecimal(item.aveUnitPrice, 0, 2)}"></td>
-						<td th:text="${#numbers.formatDecimal(item.totalInvestment, 0, 2)}"></td>
-					</tr>
-
-
-				</tbody>
-			</table>
-		</div>
-
-
-
-	</div>
-
 </body>
 </html>

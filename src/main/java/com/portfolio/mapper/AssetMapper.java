@@ -2,6 +2,7 @@ package com.portfolio.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -18,4 +19,12 @@ public interface AssetMapper {
 			+ "values(#{userId},#{companyId},#{kouzaKubun},"
 			+ "#{stockId},#{stockNum},#{aveUnitPrice})")
 	public void insertAsset(Asset asset);
+	
+	@Select("select * from asset "
+			+ "where user_id = #{userId} and stock_id = #{stockId}")
+	public List<Asset> getAssetListByStockId(String userId, String stockId);
+	
+	@Delete("delete from asset where user_id=#{userId} and company_id=#{companyId}"
+			+ "and kouza_kubun=#{kouzaKubun} and stock_id=#{stockId}")
+	public void deleteAsset(String userId, String companyId, String kouzaKubun, String stockId);
 }

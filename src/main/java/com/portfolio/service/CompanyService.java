@@ -10,4 +10,5 @@ public interface CompanyService {
 
 	public void insertCompany(Company company, String userId);
 	public List<Company> getCompanyListbyUserId(String userId);
+	public String getCompanyNameById(String userId, String companyId);
 }

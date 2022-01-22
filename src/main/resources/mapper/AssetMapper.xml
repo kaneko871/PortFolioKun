@@ -5,6 +5,17 @@
 
 <!-- Mapperとxmlのマッピング -->
 <mapper namespace="com.portfolio.mapper.AssetMapper">
+	<resultMap type="com.portfolio.model.Asset" id="asset">
+		<id column="user_id" property="userId" />
+		<id column="stock_id" property="stockId" />
+		<result column="user_id" property="userId" />
+		<result column="company_id" property="companyId" />
+		<result column="kouza_kubun" property="kouzaKubun" />
+		<result column="stock_id" property="stockId" />
+		<result column="stock_num" property="stockNum" />
+		<result column="ave_unit_price" property="aveUnitPrice" />
+	</resultMap>
+
 
 	<!-- Asset複数件取得 -->
 	<select id="findAllByUserId">
@@ -17,6 +28,17 @@
 		=
 		#{userId}
 	</select>
+
+	<select id="getAssetListByStockId" resultMap="asset">
+		select
+		*
+		from
+		asset
+		where user_id = #{userId} and
+		stock_id = #{stockId}
+
+	</select>
+
 
 
 </mapper>

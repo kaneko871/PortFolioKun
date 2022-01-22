@@ -16,4 +16,8 @@ public interface CompanyMapper {
 	
 	@Select("select * from company where user_id = #{userId}")
 	public List<Company> getCompanyListbyUserId(String userId);
+	
+	@Select("select company_name from company"
+			+ " where user_id = #{userId} and company_id = #{companyId}")
+	public String getCompanyNameById(String userId, Integer companyId);
 }
