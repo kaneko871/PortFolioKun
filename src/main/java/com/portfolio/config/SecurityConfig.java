@@ -34,7 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.ignoring()
 		.antMatchers("/webjars/**")
 		.antMatchers("/css/**")
-		.antMatchers("/js/**");
+		.antMatchers("/js/**")
+		.antMatchers("/favicon.ico");
 	}
 
 	/** セキュリティの各種設定 */
@@ -46,6 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.authorizeRequests()
 		.antMatchers("/login").permitAll() //直リンクOK
 		.antMatchers("/signup").permitAll() //直リンクOK
+		//.antMatchers("/favicon.ico").permitAll() //直リンクOK
 		.anyRequest().authenticated(); // それ以外は直リンクNG
 
 		// ログイン処理

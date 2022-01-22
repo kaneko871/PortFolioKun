@@ -11,6 +11,11 @@
 <!-- JS読込 -->
 <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+
+<!-- favicon -->
+ <link rel="icon" sizes="180x180" href="/favicon.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+ 
 <title>PortFolioKun</title>
 </head>
 <body class="bg-light">
@@ -25,12 +30,12 @@
 
 			<!-- ユーザーID -->
 			<div class="form-group">
-				<label for="userId" class="sr-only">userId</label> <input
+				<label for="userId" class="sr-only">ユーザID</label> <input
 					type="text" class="form-control" placeholder="ユーザーID" name="userId" />
 			</div>
 			<!-- パスワード -->
 			<div class="form-group">
-				<label for="password" class="sr-only">password</label> <input
+				<label for="password" class="sr-only">パスワード</label> <input
 					type="password" class="form-control" placeholder="パスワード"
 					name="password" />
 			</div>

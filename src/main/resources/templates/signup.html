@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8"></meta>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- CSS読込 -->
-  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-  <link rel="stylesheet" th:href="@{/css/signup/signup.css}">
-  <!-- JS読込 -->
-  <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
-  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
-  <title>PortFolioKun</title>
+<meta charset="UTF-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- CSS読込 -->
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/signup/signup.css}">
+<!-- JS読込 -->
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+<!-- favicon -->
+<link rel="icon" sizes="180x180" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+<title>PortFolioKun</title>
 </head>
 <body class="bg-light">
-  <form id="signup-form" method="post" action="/signup" class="form-signup" th:object="${signupForm}">
-    <h1 class="text-center">ユーザ登録</h1>
-
-    <!-- ユーザーID -->
-    <div class="form-group">
-     <label for="userId">ユーザID</label>
-      <input type="text" class="form-control" th:field="*{userId}"/>
-    </div>
-
-    <!-- パスワード -->
-    <div class="form-group">
-     <label for="password">パスワード</label>
-     <input type="text" class="form-control" th:field="*{password}">
-    </div>
-
-    <!-- 登録ボタン -->
-<!--     <input type="submit" value="ユーザ登録" class="btn btn-success w-100 mt-3"  onClick="alert('登録完了');"/> -->
-    <input type="submit" value="ユーザ登録" class="btn btn-success w-100 mt-3"  onClick="alert('登録完了');"/>
-    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-  </form>
-<div class="text-center">
-  <a th:href="@{/login}">ログイン画面へ戻る</a>
-</div>
+	<form id="signup-form" method="post" action="/signup" class="form-signup" th:object="${signupForm}">
+		<h1 class="text-center">ユーザ登録</h1>
+		<!-- ユーザーID -->
+		<div class="form-group">
+			<label for="userId">ユーザID</label> <input type="text" class="form-control" th:field="*{userId}" />
+		</div>
+		<!-- パスワード -->
+		<div class="form-group">
+			<label for="password">パスワード</label> <input type="text" class="form-control" th:field="*{password}">
+		</div>
+		<!-- 登録ボタン -->
+		<!--     <input type="submit" value="ユーザ登録" class="btn btn-success w-100 mt-3"  onClick="alert('登録完了');"/> -->
+		<input type="submit" value="ユーザ登録" class="btn btn-success w-100 mt-3" onClick="alert('登録完了');" /> <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+	</form>
+	<div class="text-center">
+		<a th:href="@{/login}">ログイン画面へ戻る</a>
+	</div>
 </body>
 </html>
