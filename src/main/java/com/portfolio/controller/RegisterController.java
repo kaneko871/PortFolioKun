@@ -43,15 +43,13 @@ public class RegisterController {
 	}
 	
 	@PostMapping("/register/company")
-	public String postRegisterCompany(@ModelAttribute RegisterCompanyForm form) {
+	public String postRegisterCompany(Model model,@ModelAttribute RegisterCompanyForm form) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String userId = auth.getName();
-
-
 		Company company = modelMapper.map(form, Company.class);
-		
 		companyService.insertCompany(company,userId);
 
+		model.addAttribute("registerFlag", "completed");
 		return "register/company";
 	}
 
@@ -61,12 +59,14 @@ public class RegisterController {
 	}
 	
 	@PostMapping("/register/stock")
-	public String postRegisterStock(@ModelAttribute RegisterStockForm form) {
+	public String postRegisterStock(Model model, @ModelAttribute RegisterStockForm form) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String userId = auth.getName();
 		
 		Stock stock = modelMapper.map(form, Stock.class);
 		stockService.insertStock(stock,userId);
+
+		model.addAttribute("registerFlag", "completed");
 		return "register/stock";
 	}
 
@@ -103,6 +103,7 @@ public class RegisterController {
 		Asset asset = modelMapper.map(form, Asset.class);
 		assetService.insertAsset(asset,userId);
 		
+		model.addAttribute("registerFlag", "completed");
 		return "register/asset";
 	}
 
