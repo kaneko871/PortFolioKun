@@ -4,3 +4,8 @@
   padding: 15px;
   margin: auto;
 }
+
+input#button {
+    display: block;
+    margin: 0 auto;
+}
