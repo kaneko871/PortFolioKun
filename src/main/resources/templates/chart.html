@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
@@ -13,9 +11,8 @@
 		<div class="header border-bottom">
 			<h1 class="h2">保有銘柄チャート</h1>
 		</div>
-
-	<canvas id="chart"></canvas>
-	<script type="text/javascript" th:inline="javascript">
+		<canvas id="chart" height="100vh"></canvas>
+		<script type="text/javascript" th:inline="javascript">
     var ctx = document.getElementById("chart").getContext('2d');
     data = {
     	    datasets: [{
@@ -50,7 +47,6 @@
     });
     
      </script>
-
 	</div>
 </body>
 </html>

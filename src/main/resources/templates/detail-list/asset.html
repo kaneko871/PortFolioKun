@@ -5,6 +5,18 @@
 <title>PortFolioKun</title>
 <!-- 個別CSS読み込み -->
 <link rel="stylesheet" th:href="@{/css/top/list.css}">
+<!-- JS読込 -->
+<script th:inline="javascript">
+window.onload = function(){
+    //「登録完了」の場合、ダイアログを表示
+    var alertStr = document.getElementById("registerFlag").value;
+    if(alertStr == "completed"){
+    	alert("登録完了しました。");
+    }
+ };
+</script>
+
+
 </head>
 <body>
 	<div layout:fragment="content">
