@@ -1,20 +1,30 @@
 .form-register-company {
   width: 100%;
-  max-width: 330px;
-  padding: 15px;
+  /* max-width: 330px; */
+  padding: 30px;
   /* margin: auto; */
 }
 
 .form-register-stock {
   width: 100%;
-  max-width: 330px;
-  padding: 15px;
+  /* max-width: 330px; */
+  padding: 30px;
   /* margin: auto; */
 }
 
 .form-register-asset {
   width: 100%;
-  max-width: 330px;
-  padding: 15px;
+  /* max-width: 330px; */
+  padding: 30px;
   /* margin: auto; */
+}
+
+label {
+    margin-right: 10px;
+}
+
+
+input#button {
+    display: block;
+    margin: 0 auto;
 }
